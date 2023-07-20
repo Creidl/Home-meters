@@ -1,4 +1,6 @@
-﻿namespace Home_Meters
+﻿using Home_Meters.@enum;
+
+namespace Home_Meters
 {
     public static class Screen
     {
@@ -62,22 +64,36 @@
             Console.ResetColor();
         }
 
-        public static void PrintMeterOption(EMeterOptions option)
+        public static void PrintMeterOption(EMeters meter, EMeterOptions option)
         {
             PrintMainHeader();
             switch (option)
             {
                 case EMeterOptions.AddNewValue:
-                    Console.WriteLine("Podaj stan licznika: TEST");
-                    //zastąpić opcją licznika wybranego wcześniej
+                    Console.WriteLine($" Enter {meter.ToString()} meter value or 'q' to finish");
                     break;
                 case EMeterOptions.PrintStatistics:
-                    Console.WriteLine("Wyświetlanie statystyk: TEST");
+                    Console.WriteLine($" {meter.ToString()} meter statistics:");
                     break;
                 case EMeterOptions.Symulation: 
-                    Console.WriteLine("Symulacja TEST");
+                    Console.WriteLine("\tSymulation: ");
+                    Console.WriteLine($" Enter {meter.ToString()} meter value or 'q' to finish");
                     break;
             }
+        }
+
+        public static void PrintStatistics(Statistics statistics, string meterUnit)
+        {
+            Console.WriteLine($"\nMeter: value: {statistics.Value} {meterUnit}");
+            Console.WriteLine($"       last value: {statistics.LastValue} {meterUnit}\n");
+
+            Console.WriteLine($"\tConsumption analisis: {statistics.CurrentConsumption}. \n");
+
+            Console.WriteLine($"Max consumption: {statistics.MaxConsumption:N2} {meterUnit}");
+            Console.WriteLine($"Average consumption: {statistics.AverageConsumption:N2} {meterUnit}");
+            Console.WriteLine($"Min consumption: {statistics.MinConsumption:N2} {meterUnit}\n");
+
+            Console.WriteLine("\tPress any button to continue.");
         }
     }
 }

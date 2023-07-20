@@ -1,9 +1,12 @@
 ﻿using Home_Meters;
+using Home_Meters.@enum;
+using Home_Meters.Meters;
+using System.Runtime.Intrinsics.X86;
 
 EMeters eMeter; 
 EMeterOptions eMeterOption;
-ConsoleKey key; //zastosowanie tymczasowe
-do // pętla głównego menu
+
+do // Main Loop
 {
     Screen.PrintMainMenu();
     
@@ -12,7 +15,7 @@ do // pętla głównego menu
     {
         break;
     }
-    else do // pętla menu miernika
+    else do // Meter Menu Loop
     {
         Screen.PrintMeterMenu(eMeter);
 
@@ -21,13 +24,11 @@ do // pętla głównego menu
         {
             break;
         }
-        else do // pętla opcji licznika
+        else  // Meter Options
         {
-            Screen.PrintMeterOption(eMeterOption);
-            //DOPISAC jak stworzy się mierniki teraz kod tymczasowy
-            key = Console.ReadKey(true).Key;
-
-        } while (key != ConsoleKey.Escape);
+            Screen.PrintMeterOption(eMeter, eMeterOption);               
+            Controller.RunMeterOption(eMeter, eMeterOption);       
+        } 
     } while (true);
     
 }while(true);
