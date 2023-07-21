@@ -15,20 +15,22 @@ do // Main Loop
     {
         break;
     }
-    else do // Meter Menu Loop
+    else
     {
-        Screen.PrintMeterMenu(eMeter);
+        do // Meter Menu Loop
+        {
+            Screen.PrintMeterMenu(eMeter);
 
-        eMeterOption = Controller.GetEMeterOption();
-        if(eMeterOption == EMeterOptions.BackToMainMenu)
-        {
-            break;
-        }
-        else  // Meter Options
-        {
-            Screen.PrintMeterOption(eMeter, eMeterOption);               
-            Controller.RunMeterOption(eMeter, eMeterOption);       
-        } 
-    } while (true);
-    
+            eMeterOption = Controller.GetEMeterOption();
+            if (eMeterOption == EMeterOptions.BackToMainMenu)
+            {
+                break;
+            }
+            else  // Meter Options
+            {
+                Screen.PrintMeterOption(eMeter, eMeterOption);
+                Controller.RunMeterOption(eMeter, eMeterOption);
+            }
+        } while (true);
+    }
 }while(true);

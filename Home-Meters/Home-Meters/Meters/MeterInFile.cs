@@ -1,7 +1,4 @@
-﻿using Home_Meters.@enum;
-using System.Diagnostics;
-
-namespace Home_Meters.Meters
+﻿namespace Home_Meters.Meters
 {
     public class MeterInFile : MeterBase
     {
@@ -10,33 +7,7 @@ namespace Home_Meters.Meters
         public MeterInFile(string fileName)
         {
             this.fileName = fileName;   
-        }
-
-        private List<double> GetValuesFromFile()
-        {
-            List<double> values = new List<double>();
-            if (File.Exists(fileName))
-            {
-                using (var reader = File.OpenText(fileName))
-                {
-                    var line = reader.ReadLine();
-                    while (line != null)
-                    {
-                        values.Add(double.Parse(line));
-                        line = reader.ReadLine();
-                    }
-                }
-            }
-            return values;
-        }
-
-        private void AddValueToFile(double value)
-        {
-            using (var writer = File.AppendText(fileName))
-            {
-                writer.WriteLine(value);
-            }
-        }
+        }       
 
         public override void AddValue(double value)
         {
@@ -71,6 +42,32 @@ namespace Home_Meters.Meters
             List<double> values = GetValuesFromFile();
             Statistics statistics = new Statistics(values);
             return statistics;
+        }
+
+        private List<double> GetValuesFromFile()
+        {
+            List<double> values = new List<double>();
+            if (File.Exists(fileName))
+            {
+                using (var reader = File.OpenText(fileName))
+                {
+                    var line = reader.ReadLine();
+                    while (line != null)
+                    {
+                        values.Add(double.Parse(line));
+                        line = reader.ReadLine();
+                    }
+                }
+            }
+            return values;
+        }
+
+        private void AddValueToFile(double value)
+        {
+            using (var writer = File.AppendText(fileName))
+            {
+                writer.WriteLine(value);
+            }
         }
     }
 }

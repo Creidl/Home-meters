@@ -4,17 +4,6 @@ namespace Home_Meters
 {
     public static class Screen
     {
-        private static void PrintMainHeader()
-        {
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.Clear();
-            Console.BackgroundColor = ConsoleColor.DarkBlue;
-            Console.WriteLine("\n  **********^^^^^^^^^^^^^^**********  "+
-                              "\n  ####==---< HOME  METERS >---==####  "+
-                              "\n  **********^^^^^^^^^^^^^^**********  \n");
-            Console.ResetColor();
-        }
-
         public static void PrintMainMenu()
         {
             PrintMainHeader();
@@ -94,6 +83,17 @@ namespace Home_Meters
             Console.WriteLine($"Min consumption: {statistics.MinConsumption:N2} {meterUnit}\n");
 
             Console.WriteLine("\tPress any button to continue.");
+        }
+
+        private static void PrintMainHeader()
+        {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Clear();
+            Console.BackgroundColor = ConsoleColor.DarkBlue;
+            Console.WriteLine("\n  **********^^^^^^^^^^^^^^**********  " +
+                              "\n  ####==---< HOME  METERS >---==####  " +
+                              "\n  **********^^^^^^^^^^^^^^**********  \n");
+            Console.ResetColor();
         }
     }
 }

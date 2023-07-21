@@ -67,8 +67,7 @@
 
         public double LastValue { get; private set; }
 
-        private List<double> Consumption;
-        
+        private List<double> Consumption;        
 
         public Statistics(List<double> values)
         {

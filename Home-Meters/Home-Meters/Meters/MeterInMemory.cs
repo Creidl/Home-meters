@@ -11,7 +11,7 @@
 
         public override void AddValue (double value) 
         {
-            if(values.Count == 0)
+            if (values.Count == 0)
             {
                 if (value >= 0)
                 {
@@ -32,8 +32,7 @@
                 {
                     throw new Exception(" Value is lower than before! ");
                 }
-            }
-                
+            }                
         }
 
         public override Statistics GetStatistics()
